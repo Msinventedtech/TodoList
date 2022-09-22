@@ -4,7 +4,6 @@ class Todo extends React.Component {
 constructor(props) {
   super(props);
     this.state ={
-      signInEmail:'',
     }
 }
 
@@ -29,7 +28,7 @@ onSubmitRemove =() => {
                 <article className="br3 ba b--black-10 mv4  w-75-l mw6 shadow-3 center">
                   <main className="pa4 black-80">
                     <div className="measure">
-                    <legend className="f3 fw6 ph0 mh0">Name of the List</legend>
+                    <legend className="f3 fw6 ph0 mh0">{this.props.inputList}</legend>
                 
                     </div>
                     <div className="mv3">

@@ -6,28 +6,36 @@ import Create from './Page 2/Todo';
 
 
 class App extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      route : 'completed'
+      route : 'completed',
+      valueChange :''
     }
   }
+
 
   onRouteChange = (route) => {
     this.setState({route: route});
     }
+
+  onInputChange = (event) => {
+      this.setState({valueChange: event.target.value});
+    }
+   
 
   render(){
 
     return(
       <div>
         {this.state.route === 'completed' ? 
-        <From onRouteChange={this.onRouteChange} /> :
-        <Create onRouteChange={this.onRouteChange}/>
+        <From  onInputChange={this.onInputChange}  onRouteChange={this.onRouteChange}  /> :
+        <Create   inputList = {this.state.valueChange} onRouteChange={this.onRouteChange}/>
       }
       </div>
     );
-    }
+    
+  }
   }
 
 export default App;

@@ -1,6 +1,7 @@
 import React from "react";
 import './From.css';
 
+
 const options =[
     {
         label: 'High',
@@ -15,6 +16,8 @@ const options =[
     },
 ]
 
+
+
 const From = ({onInputChange, handleChange, onRouteChange}) => {
     return (    
      <div className="content-container"> 
@@ -28,8 +31,8 @@ const From = ({onInputChange, handleChange, onRouteChange}) => {
            <div className= 'tc'>
              <input className ='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-50' 
                type='text' 
-               placeholder="Create Your Category"
-               onChange={onInputChange}                         
+               placeholder="Create Your Category"  
+               onChange={onInputChange}  
              /></div>
         <div className='tc pa2'>
                 <span className='ma2 f5'> Priority
