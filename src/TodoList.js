@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import From from './Page 1/From';
 import './App.css';
 import Create from './Page 2/Todo';
@@ -25,12 +25,11 @@ class App extends Component {
    
 
   render(){
-
     return(
       <div>
         {this.state.route === 'completed' ? 
         <From  onInputChange={this.onInputChange}  onRouteChange={this.onRouteChange}  /> :
-        <Create   inputList = {this.state.valueChange} onRouteChange={this.onRouteChange}/>
+        <Create  inputList = {this.state.valueChange} onRouteChange={this.onRouteChange}/>
       }
       </div>
     );

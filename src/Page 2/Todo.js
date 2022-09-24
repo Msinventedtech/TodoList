@@ -1,18 +1,48 @@
 import React from "react";
+import TodoItems from "./TodoItems";
+
 
 class Todo extends React.Component {
 constructor(props) {
   super(props);
-    this.state ={
-    }
+  this.state = {
+    items: []
+  };  
+  this.addItem = this.addItem.bind(this);
+  this.deleteItem = this.deleteItem.bind(this);
+}
+
+addItem(e) {
+  if (this._inputElement.value !== "") {
+    var newItem = {
+      text: this._inputElement.value,
+      key: Date.now()
+    };
+ 
+    this.setState((prevState) => {
+      return { 
+        items: prevState.items.concat(newItem) 
+      };
+    });
+   
+    this._inputElement.value = "";
+  }
+   
+  console.log(this.state.items);
+     
+  e.preventDefault();
 }
 
 
-onSubmitSignIn =() => {
-  }
-
-onSubmitRemove =() => {
-  }
+deleteItem(key) {
+  var filteredItems = this.state.items.filter(function (item) {
+    return (item.key !== key);
+  });
+ 
+  this.setState({
+    items: filteredItems
+  });
+}
 
   render() {
     const {onRouteChange} = this.props;
@@ -32,27 +62,20 @@ onSubmitRemove =() => {
                 
                     </div>
                     <div className="mv3">
-                    <label className="db fw6 lh-copy f6">1.Pencil</label>
+                    <legend className="f5 fw6 ph0 mh0">{this.userInput}</legend>
+                    <form onSubmit={this.addItem}>
                     <input 
-                    className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-                    name="password"  
-                    id="password"
-                    onChange={this.onPasswordChange}
-                    />
+                    className ='b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-50'
+                    ref={(a) => this._inputElement = a} 
+                     placeholder="enter task">
+                    </input>
+                    <button 
+                    className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                    type="submit">add</button>
+                    </form>
                     </div>
-                
-                    <div className="">
-                    <input 
-                            onClick={this.onSubmitSignIn}
-                            className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
-                            type="submit" 
-                            value="Add"/>
-                       <input 
-                            onClick={this.onSubmitRemove}
-                            className="b ma2 ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
-                            type="submit" 
-                            value="Remove"/>
-                    </div>
+                    <TodoItems entries={this.state.items}
+                               delete={this.deleteItem}/>
                     <p onClick={()=>onRouteChange ('completed')} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib">Completed</p>
                   </main>
                 </article>     
