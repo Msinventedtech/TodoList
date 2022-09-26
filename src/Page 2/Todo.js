@@ -50,7 +50,7 @@ deleteItem(key) {
 
         <div>
             <div>
-              <h1 className='ma0 pa0 tc f3 fw6'>Create Your Shopping List</h1>
+              <h1 className='ma0 pa0 tc f3 fw6'>Create Your Todo Task List</h1>
                   <main className="pa4 black-80">
                     <div className="measure">
                     <legend className="f3 fw6 ph0 mh0">{this.props.inputList} Priority: {this.props.inputPriority}</legend>
