@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {Component} from 'react';
 import From from './Page 1/From';
 import './App.css';
 import Create from './Page 2/Todo';
@@ -10,7 +10,8 @@ class App extends Component {
     super(props);
     this.state = {
       route : 'completed',
-      valueChange :''
+      valueChange :'',
+      Priority : ''
     }
   }
 
@@ -22,14 +23,19 @@ class App extends Component {
   onInputChange = (event) => {
       this.setState({valueChange: event.target.value});
     }
+
+   handleChange = (event)=> {
+    this.setState({Priority: event.target.value })
+    console.log(this.state.Priority)
+   } 
    
 
   render(){
     return(
       <div>
         {this.state.route === 'completed' ? 
-        <From  onInputChange={this.onInputChange}  onRouteChange={this.onRouteChange}  /> :
-        <Create  inputList = {this.state.valueChange} onRouteChange={this.onRouteChange}/>
+        <From  onInputChange={this.onInputChange} handleChange={this.handleChange} onRouteChange={this.onRouteChange}  /> :
+        <Create inputPriority={this.state.Priority} inputList = {this.state.valueChange} onRouteChange={this.onRouteChange}/>
       }
       </div>
     );

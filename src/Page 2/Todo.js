@@ -48,17 +48,12 @@ deleteItem(key) {
     const {onRouteChange} = this.props;
     return (
 
-        <div className="content-container"> 
-        <div className="row">      
-            <div className="left-panel box">
-              <h1 className='ma0 pa0 tc  fw5 txt'>Completed List</h1>          
-            </div> 
-  
-            <div className="right-panel box">
-                <article className="br3 ba b--black-10 mv4  w-75-l mw6 shadow-3 center">
+        <div>
+            <div>
+              <h1 className='ma0 pa0 tc f3 fw6'>Create Your Shopping List</h1>
                   <main className="pa4 black-80">
                     <div className="measure">
-                    <legend className="f3 fw6 ph0 mh0">{this.props.inputList}</legend>
+                    <legend className="f3 fw6 ph0 mh0">{this.props.inputList} Priority: {this.props.inputPriority}</legend>
                 
                     </div>
                     <div className="mv3">
@@ -71,17 +66,15 @@ deleteItem(key) {
                     </input>
                     <button 
                     className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-                    type="submit">add</button>
+                    type="submit">Add</button>
                     </form>
                     </div>
                     <TodoItems entries={this.state.items}
                                delete={this.deleteItem}/>
-                    <p onClick={()=>onRouteChange ('completed')} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib">Completed</p>
-                  </main>
-                </article>     
+                    <p onClick={()=>onRouteChange ('completed')} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib">Create New TodoList!!!!</p>
+                  </main> 
             </div>      
-        </div>
-    </div>    
+        </div> 
     );
   }
 }
